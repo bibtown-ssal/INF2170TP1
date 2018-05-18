@@ -1,0 +1,32 @@
+presentation
+    lecture du premier char
+    Si lettre   -> afficherMorse
+                -> enregistrer "dernier affichage = lettre"
+                -> passer au charactere suivant (13)
+    Sinon
+        Si chiffre  -> afficher Morse
+                    -> enregistrer "dernier affichage" = "chiffre"
+                    -> passer au charactere suivant (13)
+        Sinon
+            passer au charactere suivant (3)
+    
+    Si lettre
+            si "dernier affichage" = "lettre"
+                    -> afficher "!"
+            sinon   -> afficher "\n"
+            -> afficher morse
+            -> enregistrer "dernier affichage" = "lettre"
+            -> passer au charactere suivant (13)
+    Sinon si chiffre
+            si "dernier affichage" = "chiffre"
+                    -> afficher "!"
+            sinon   -> afficher "\n"
+            -> afficher morse
+            -> enregistrer "dernier affichage" = "chiffre"
+            -> passer au charactere suivant (13)
+    Sinon si "\n"
+            -> STOP
+    Sinon
+            -> passer au charactere suivant (13)
+        
+                    
