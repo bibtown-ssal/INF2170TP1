@@ -98,74 +98,62 @@ end01:           STOP                                 ;}
 ; chiffreEnMorse(char)   affiche la string morse equivalente au char en A
                                                       ;{
 THEN01:          NOP0                                 ;if
-IF05:            CPA         NUM0,i                   ;   (char = '0'){
-                 BRNE        ELSEIF06
-THEN05:          LDX         morse0,i                 ;   chrMorse = *morse0;
-                 STX         chrMorse,d 
-                 BR          FINIF05                  
-ELSEIF06:        NOP0                                 ;}elseif
-                 CPA         NUM1,i                   ;   (char = '1'){
-                 BRNE        ELSEIF07
-THEN06:          LDX         morse1,i                 ;   chrMorse = *morse1;
-                 STX         chrMorse,d 
-                 BR          FINIF05
-ELSEIF07:        NOP0                                 ;}elseif
-                 CPA         NUM2,i                   ;   (char = '2'){
-                 BRNE        ELSEIF08
-THEN07:          LDX         morse2,i                 ;   chrMorse = *morse2
-                 STX         chrMorse,d
-                 BR          FINIF05
-ELSEIF08:        NOP0                                 ;}elseif
-                 CPA         NUM3,i                   ;   (char = '3'){
-                 BRNE        ELSEIF09
-THEN08:          LDX         morse3,i                 ;   chrMorse = *morse3
-                 STX         chrMorse,d
-                 BR          FINIF05
-ELSEIF09:        NOP0                                 ;}elseif
-                 CPA         NUM4,i                   ;   (char = '4'){
-                 BRNE        ELSEIF0A
-THEN09:          LDX         morse4,i                 ;   chrMorse = *morse4
-                 STX         chrMorse,d
-                 BR          FINIF05
-ELSEIF0A:        NOP0                                 ;}elseif
-                 CPA         NUM5,i                   ;   (char = '5'){
-                 BRNE        ELSEIF0B
-THEN0A:          LDX         morse5,i                 ;   chrMorse = *morse5
-                 STX         chrMorse,d
-                 BR          FINIF05
-ELSEIF0B:        NOP0                                 ;}elseif
-                 CPA         NUM6,i                   ;   (char = '6'){
-                 BRNE        ELSEIF0C
-THEN0B:          LDX         morse6,i                 ;   chrMorse = *morse6
-                 STX         chrMorse,d
-                 BR          FINIF05
-ELSEIF0C:        NOP0                                 ;}elseif
-                 CPA         NUM7,i                   ;   (char = '7'){
-                 BRNE        ELSEIF0D
-THEN0C:          LDX         morse7,i                 ;   chrMorse = *morse7
-                 STX         chrMorse,d
-                 BR          FINIF05
-ELSEIF0D:        NOP0                                 ;}elseif
-                 CPA         NUM8,i                   ;   (char = '8'){
-                 BRNE        ELSE0E
-THEN0D:          LDX         morse8,i                 ;   chrMorse = *morse8
-                 STX         chrMorse,d
-                 BR          FINIF05
-ELSE0E:          NOP0                                 ;}else{
-                 LDX         morse9,i                 ;   chrMorse = *morse9
-                 STX         chrMorse,d
-                                                      ;}
-FINIF05:         NOP0                                 ;if
-                 LDA         dernier,d 
-IF10:            CPA         CHIFFRE,i                   ;   (dernier = CHIFFRE){  
+IF10:            LDX         dernier,d                ;   (dernier == LETTRE){
+                 CPX         CHIFFRE,i
                  BRNE        ELSE10
-THEN10:          CHARO       NEWCHAR,i                ;   print('!');
-                 BR          FINIF10                  ;
+THEN10:           CHARO       NEWCHAR,i                ;   print('!'); 
+                 BR          IF05
 ELSE10:          NOP0                                 ;}else{
                  CHARO       NEWLINE,i                ;   print('\n');
+FINIF10:          NOP0                                 ;}
+IF05:            CPA         NUM0,i                   ;   (char == '0'){
+                 BRNE        ELSEIF06
+THEN05:          STRO        morse0,d                 ;   print(morse0);;
+                 BR          FINIF05                  
+ELSEIF06:        NOP0                                 ;}elseif
+                 CPA         NUM1,i                   ;   (char == '1'){
+                 BRNE        ELSEIF07
+THEN06:          STRO        morse1,d                 ;   print(morse1);;
+                 BR          FINIF05
+ELSEIF07:        NOP0                                 ;}elseif
+                 CPA         NUM2,i                   ;   (char == '2'){
+                 BRNE        ELSEIF08
+THEN07:          STRO        morse2,d                 ;   print(morse2);
+                 BR          FINIF05
+ELSEIF08:        NOP0                                 ;}elseif
+                 CPA         NUM3,i                   ;   (char == '3'){
+                 BRNE        ELSEIF09
+THEN08:          STRO        morse3,d                 ;   print(morse3);
+                 BR          FINIF05
+ELSEIF09:        NOP0                                 ;}elseif
+                 CPA         NUM4,i                   ;   (char == '4'){
+                 BRNE        ELSEIF0A
+THEN09:          STRO        morse4,d                 ;   print(morse4);
+                 BR          FINIF05
+ELSEIF0A:        NOP0                                 ;}elseif
+                 CPA         NUM5,i                   ;   (char == '5'){
+                 BRNE        ELSEIF0B
+THEN0A:          STRO        morse5,d                 ;   print(morse5);
+                 BR          FINIF05
+ELSEIF0B:        NOP0                                 ;}elseif
+                 CPA         NUM6,i                   ;   (char == '6'){
+                 BRNE        ELSEIF0C
+THEN0B:          STRO        morse6,d                 ;   print(morse6);
+                 BR          FINIF05
+ELSEIF0C:        NOP0                                 ;}elseif
+                 CPA         NUM7,i                   ;   (char == '7'){
+                 BRNE        ELSEIF0D
+THEN0C:          STRO        morse7,d                 ;   print(morse7);
+                 BR          FINIF05
+ELSEIF0D:        NOP0                                 ;}elseif
+                 CPA         NUM8,i                   ;   (char == '8'){
+                 BRNE        ELSE0E
+THEN0D:          STRO        morse8,d                 ;   print(morse8);
+                 BR          FINIF05
+ELSE0E:          NOP0                                 ;}else{
+                 STRO        morse9,d                 ;   print(morse9);
                                                       ;}
-FINIF10:         STRO        chrMorse,n               ;print(*chrMorse);
-                 LDA         CHIFFRE,i
+FINIF05:         LDA         CHIFFRE,i
                  STA         dernier,d                ;dernier = CHIFFRE;
                  BR          retour01                 ;}
 
@@ -173,170 +161,143 @@ FINIF10:         STRO        chrMorse,n               ;print(*chrMorse);
 ;   lettreMajEnMorse(char)   affiche la string morse equivalente au char en A
                                                       ;{
 THEN02:          NOP0                                 ;if
-IF11:            CPA         LETTREA,i                ;    (char = 'A'){
-                 BRNE        ELSEIF12
-THEN11:          LDX         morseA,i                 ;    chrMorse = *morseA
-                 STX         chrMorse,d               
-                 BR          FINIF11
-ELSEIF12:        NOP0                                 ;}elseif
-                 CPA         LETTREB,i                ;    (char = 'B'){
-                 BRNE        ELSEIF13
-THEN12:          LDX         morseB,i                 ;    chrMorse = *morseB
-                 STX         chrMorse,d               
-                 BR          FINIF11
-ELSEIF13:        NOP0                                 ;}elseif
-                 CPA         LETTREC,i                ;    (char = 'C'){
-                 BRNE        ELSEIF14
-THEN13:          LDX         morseC,i                 ;    chrMorse = *morseC
-                 STX         chrMorse,d               
-                 BR          FINIF11
-ELSEIF14:        NOP0                                 ;}elseif
-                 CPA         LETTRED,i                ;    (char = 'D'){
-                 BRNE        ELSEIF15
-THEN14:          LDX         morseD,i                 ;    chrMorse = *morseD
-                 STX         chrMorse,d               
-                 BR          FINIF11
-ELSEIF15:        NOP0                                 ;}elseif
-                 CPA         LETTREE,i                ;    (char = 'E'){
-                 BRNE        ELSEIF16
-THEN15:          LDX         morseE,i                 ;    chrMorse = *morseE
-                 STX         chrMorse,d               
-                 BR          FINIF11
-ELSEIF16:        NOP0                                 ;}elseif
-                 CPA         LETTREF,i                ;    (char = 'F'){
-                 BRNE        ELSEIF17
-THEN16:          LDX         morseF,i                 ;    chrMorse = *morseF 
-                 STX         chrMorse,d               
-                 BR          FINIF11
-ELSEIF17:        NOP0                                 ;}elseif
-                 CPA         LETTREG,i                ;    (char = 'G'){
-                 BRNE        ELSEIF18
-THEN17:          LDX         morseG,i                 ;    chrMorse = *morseG
-                 STX         chrMorse,d               
-                 BR          FINIF11
-ELSEIF18:        NOP0                                 ;}elseif
-                 CPA         LETTREH,i                ;    (char = 'H'){
-                 BRNE        ELSEIF19
-THEN18:          LDX         morseH,i                 ;    chrMorse = *morseH
-                 STX         chrMorse,d               
-                 BR          FINIF11
-ELSEIF19:        NOP0                                 ;}elseif
-                 CPA         LETTREI,i                ;    (char = 'I'){
-                 BRNE        ELSEIF1A
-THEN19:          LDX         morseI,i               ;    chrMorse = *morseI
-                 STX         chrMorse,d               
-                 BR          FINIF11
-ELSEIF1A:        NOP0                                 ;}elseif
-                 CPA         LETTREJ,i                ;    (char = 'J'){
-                 BRNE        ELSEIF1B
-THEN1A:          LDX         morseJ,i                 ;    chrMorse = *morseJ
-                 STX         chrMorse,d               
-                 BR          FINIF11
-ELSEIF1B:        NOP0                                 ;}elseif
-                 CPA         LETTREK,i                ;    (char = 'K'){
-                 BRNE        ELSEIF1C
-THEN1B:          LDX         morseK,i                 ;    chrMorse = *morseK
-                 STX         chrMorse,d               
-                 BR          FINIF11
-ELSEIF1C:        NOP0                                 ;}elseif
-                 CPA         LETTREL,i                ;    (char = 'L'){
-                 BRNE        ELSEIF1D
-THEN1C:          LDX         morseL,i                 ;    chrMorse = *morseL
-                 STX         chrMorse,d               
-                 BR          FINIF11
-ELSEIF1D:        NOP0                                 ;}elseif
-                 CPA         LETTREM,i                ;    (char = 'M'){
-                 BRNE        ELSEIF1E
-THEN1D:          LDX         morseM,i                 ;    chrMorse = *morseM
-                 STX         chrMorse,d               
-                 BR          FINIF11
-ELSEIF1E:        NOP0                                 ;}elseif
-                 CPA         LETTREN,i                ;    (char = 'N'){
-                 BRNE        ELSEIF1F
-THEN1E:          LDX         morseN,i                 ;    chrMorse = *morseN
-                 STX         chrMorse,d               
-                 BR          FINIF11
-ELSEIF1F:        NOP0                                 ;}elseif
-                 CPA         LETTREO,i                ;    (char = 'O'){
-                 BRNE        ELSEIF20
-THEN1F:          LDX         morseO,i                 ;    chrMorse = *morseO
-                 STX         chrMorse,d               
-                 BR          FINIF11
-ELSEIF20:        NOP0                                 ;}elseif
-                 CPA         LETTREP,i                ;    (char = 'P'){
-                 BRNE        ELSEIF21
-THEN20:          LDX         morseP,i                 ;    chrMorse = *morseP
-                 STX         chrMorse,d               
-                 BR          FINIF11
-ELSEIF21:        NOP0                                 ;}elseif
-                 CPA         LETTREQ,i                ;    (char = 'Q'){
-                 BRNE        ELSEIF22
-THEN21:          LDX         morseQ,i                 ;    chrMorse = *morseQ
-                 STX         chrMorse,d               
-                 BR          FINIF11
-ELSEIF22:        NOP0                                 ;}elseif
-                 CPA         LETTRER,i                ;    (char = 'R'){
-                 BRNE        ELSEIF23
-THEN22:          LDX         morseR,i                 ;    chrMorse = *morseR
-                 STX         chrMorse,d               
-                 BR          FINIF11
-ELSEIF23:        NOP0                                 ;}elseif
-                 CPA         LETTRES,i                ;    (char = 'S'){
-                 BRNE        ELSEIF24
-THEN23:          LDX         morseS,i                 ;    chrMorse = *morseS
-                 STX         chrMorse,d               
-                 BR          FINIF11
-ELSEIF24:        NOP0                                 ;}elseif
-                 CPA         LETTRET,i                ;    (char = 'T'){
-                 BRNE        ELSEIF25
-THEN24:          LDX         morseT,i                 ;    chrMorse = *morseT
-                 STX         chrMorse,d               
-                 BR          FINIF11
-ELSEIF25:        NOP0                                 ;}elseif
-                 CPA         LETTREU,i                ;    (char = 'U'){
-                 BRNE        ELSEIF26
-THEN25:          LDX         morseU,i                 ;    chrMorse = *morseU
-                 STX         chrMorse,d               
-                 BR          FINIF11
-ELSEIF26:        NOP0                                 ;}elseif
-                 CPA         LETTREV,i                ;    (char = 'V'){
-                 BRNE        ELSEIF27
-THEN26:          LDX         morseV,i                 ;    chrMorse = *morseV
-                 STX         chrMorse,d               
-                 BR          FINIF11
-ELSEIF27:        NOP0                                 ;}elseif
-                 CPA         LETTREW,i                ;    (char = 'W'){
-                 BRNE        ELSEIF28
-THEN27:          LDX         morseW,i                 ;    chrMorse = *morseW
-                 STX         chrMorse,d               
-                 BR          FINIF11
-ELSEIF28:        NOP0                                 ;}elseif
-                 CPA         LETTREX,i                ;    (char = 'X'){
-                 BRNE        ELSEIF29
-THEN28:          LDX         morseX,i                 ;    chrMorse = *morseX
-                 STX         chrMorse,d               
-                 BR          FINIF11
-ELSEIF29:        NOP0                                 ;}elseif
-                 CPA         LETTREY,i                ;    (char = 'Y'){
-                 BRNE        ELSE2A
-THEN29:          LDX         morseY,i                 ;    chrMorse = *morseY
-                 STX         chrMorse,d               
-                 BR          FINIF11
-ELSE2A:          NOP0                                 ;}else{
-THEN2A:          LDX         morseZ,i                 ;    chrMorse = *morseZ
-                 STX         chrMorse,d               ;}
-
-FINIF11:         NOP0                                 ;if
-                 LDA         dernier,d 
-IF2B:            CPA         LETTRE,i                   ;   (dernier = LETTRE){  
+                 LDX         dernier,d 
+IF2B:            CPX         LETTRE,i                 ;   (dernier == LETTRE){  
                  BRNE        ELSE2C
 THEN2B:          CHARO       NEWCHAR,i                ;   print('!');
                  BR          FINIF2B                  ;
 ELSE2C:          NOP0                                 ;}else{
                  CHARO       NEWLINE,i                ;   print('\n');
-                                                      ;}
-FINIF2B:         STRO        chrMorse,n               ;print(*chrMorse); 
-                 LDA         LETTRE,i
+FINIF2B:         NOP0                                 ;} 
+IF11:            CPA         LETTREA,i                ;    (char == 'A'){
+                 BRNE        ELSEIF12
+THEN11:          STRO        morseA,d                 ;    print(morseA);
+                 BR          FINIF11
+ELSEIF12:        NOP0                                 ;}elseif
+                 CPA         LETTREB,i                ;    (char == 'B'){
+                 BRNE        ELSEIF13
+THEN12:          STRO        morseB,d                 ;    print(morseB);
+                 BR          FINIF11
+ELSEIF13:        NOP0                                 ;}elseif
+                 CPA         LETTREC,i                ;    (char == 'C'){
+                 BRNE        ELSEIF14
+THEN13:          STRO        morseC,d                 ;    print(morseC);
+                 BR          FINIF11
+ELSEIF14:        NOP0                                 ;}elseif
+                 CPA         LETTRED,i                ;    (char == 'D'){
+                 BRNE        ELSEIF15
+THEN14:          STRO        morseD,d                 ;    print(morseD);
+                 BR          FINIF11
+ELSEIF15:        NOP0                                 ;}elseif
+                 CPA         LETTREE,i                ;    (char == 'E'){
+                 BRNE        ELSEIF16
+THEN15:          STRO        morseE,d                 ;    print(morseE);
+                 BR          FINIF11
+ELSEIF16:        NOP0                                 ;}elseif
+                 CPA         LETTREF,i                ;    (char == 'F'){
+                 BRNE        ELSEIF17
+THEN16:          STRO        morseF,d                 ;    print(morseF); 
+                 BR          FINIF11
+ELSEIF17:        NOP0                                 ;}elseif
+                 CPA         LETTREG,i                ;    (char == 'G'){
+                 BRNE        ELSEIF18
+THEN17:          STRO        morseG,d                 ;    print(morseG);
+                 BR          FINIF11
+ELSEIF18:        NOP0                                 ;}elseif
+                 CPA         LETTREH,i                ;    (char == 'H'){
+                 BRNE        ELSEIF19
+THEN18:          STRO        morseH,d                 ;    print(morseH);
+                 BR          FINIF11
+ELSEIF19:        NOP0                                 ;}elseif
+                 CPA         LETTREI,i                ;    (char == 'I'){
+                 BRNE        ELSEIF1A
+THEN19:          STRO        morseI,d                 ;    print(morseI);
+                 BR          FINIF11
+ELSEIF1A:        NOP0                                 ;}elseif
+                 CPA         LETTREJ,i                ;    (char == 'J'){
+                 BRNE        ELSEIF1B
+THEN1A:          STRO        morseJ,d                 ;    print(morseJ);
+                 BR          FINIF11
+ELSEIF1B:        NOP0                                 ;}elseif
+                 CPA         LETTREK,i                ;    (char == 'K'){
+                 BRNE        ELSEIF1C
+THEN1B:          STRO        morseK,d                 ;    print(morseK);
+                 BR          FINIF11
+ELSEIF1C:        NOP0                                 ;}elseif
+                 CPA         LETTREL,i                ;    (char == 'L'){
+                 BRNE        ELSEIF1D
+THEN1C:          STRO        morseL,d                 ;    print(morseL);
+                 BR          FINIF11
+ELSEIF1D:        NOP0                                 ;}elseif
+                 CPA         LETTREM,i                ;    (char == 'M'){
+                 BRNE        ELSEIF1E
+THEN1D:          STRO        morseM,d                 ;    print(morseM);
+                 BR          FINIF11
+ELSEIF1E:        NOP0                                 ;}elseif
+                 CPA         LETTREN,i                ;    (char == 'N'){
+                 BRNE        ELSEIF1F
+THEN1E:          STRO        morseN,d                 ;    print(morseN);
+                 BR          FINIF11
+ELSEIF1F:        NOP0                                 ;}elseif
+                 CPA         LETTREO,i                ;    (char == 'O'){
+                 BRNE        ELSEIF20
+THEN1F:          STRO        morseO,d                 ;    print(morseO);
+                 BR          FINIF11
+ELSEIF20:        NOP0                                 ;}elseif
+                 CPA         LETTREP,i                ;    (char == 'P'){
+                 BRNE        ELSEIF21
+THEN20:          STRO        morseP,d                 ;    print(morseP);
+                 BR          FINIF11
+ELSEIF21:        NOP0                                 ;}elseif
+                 CPA         LETTREQ,i                ;    (char == 'Q'){
+                 BRNE        ELSEIF22
+THEN21:          STRO        morseQ,d                 ;    print(morseQ);
+                 BR          FINIF11
+ELSEIF22:        NOP0                                 ;}elseif
+                 CPA         LETTRER,i                ;    (char == 'R'){
+                 BRNE        ELSEIF23
+THEN22:          STRO        morseR,d                 ;    print(morseR);
+                 BR          FINIF11
+ELSEIF23:        NOP0                                 ;}elseif
+                 CPA         LETTRES,i                ;    (char == 'S'){
+                 BRNE        ELSEIF24
+THEN23:          STRO        morseS,d                 ;    print(morseS);
+                 BR          FINIF11
+ELSEIF24:        NOP0                                 ;}elseif
+                 CPA         LETTRET,i                ;    (char == 'T'){
+                 BRNE        ELSEIF25
+THEN24:          STRO        morseT,d                 ;    print(morseT);
+                 BR          FINIF11
+ELSEIF25:        NOP0                                 ;}elseif
+                 CPA         LETTREU,i                ;    (char == 'U'){
+                 BRNE        ELSEIF26
+THEN25:          STRO        morseU,d                 ;    print(morseU);
+                 BR          FINIF11
+ELSEIF26:        NOP0                                 ;}elseif
+                 CPA         LETTREV,i                ;    (char == 'V'){
+                 BRNE        ELSEIF27
+THEN26:          STRO        morseV,d                 ;    print(morseV);
+                 BR          FINIF11
+ELSEIF27:        NOP0                                 ;}elseif
+                 CPA         LETTREW,i                ;    (char == 'W'){
+                 BRNE        ELSEIF28
+THEN27:          STRO        morseW,d                 ;    print(morseW);
+                 BR          FINIF11
+ELSEIF28:        NOP0                                 ;}elseif
+                 CPA         LETTREX,i                ;    (char == 'X'){
+                 BRNE        ELSEIF29
+THEN28:          STRO        morseX,d                 ;    print(morseX);
+                 BR          FINIF11
+ELSEIF29:        NOP0                                 ;}elseif
+                 CPA         LETTREY,i                ;    (char == 'Y'){
+                 BRNE        ELSE2A
+THEN29:          STRO        morseY,d                 ;    print(morseY);
+                 BR          FINIF11
+ELSE2A:          NOP0                                 ;}else{
+THEN2A:          STRO        morseZ,d                 ;    print(morseZ);
+                                                      ;} 
+
+FINIF11:         LDA         LETTRE,i 
                  STA         dernier,d                ;dernier = CHIFFRE;
                  BR          retour01                 ;}
 
@@ -349,11 +310,9 @@ THEN03:          SUBA        MINTOMAJ,i               ;char = (char)(char - 32);
 
 dernier:         .WORD       0                        ;1 = lettre, 2 = chiffre, 0 = autre charactere
 char:            .BLOCK      1
-test:            .WORD       '!'
 MsgPres:         .ASCII      "Bonjour! Ce programme va traduire une \n"
                  .ASCII      "phrase en alphabet latin en code morse!\x00" 
 MsgSol:          .ASCII      "\n\nVeuillez entrer une phrase a traduire : \x00"
-chrMorse:        .ADDRSS     morseA 
 morseA:          .ASCII      ".-\x00"
 morseB:          .ASCII      "-...\x00"
 morseC:          .ASCII      "-.-.\x00"
