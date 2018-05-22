@@ -101,11 +101,11 @@ THEN01:          NOP0                                 ;if
 IF10:            LDX         dernier,d                ;   (dernier == LETTRE){
                  CPX         CHIFFRE,i
                  BRNE        ELSE10
-THEN10:           CHARO       NEWCHAR,i                ;   print('!'); 
+THEN10:          CHARO       NEWCHAR,i                ;   print('!'); 
                  BR          IF05
 ELSE10:          NOP0                                 ;}else{
                  CHARO       NEWLINE,i                ;   print('\n');
-FINIF10:          NOP0                                 ;}
+FINIF10:         NOP0                                 ;}
 IF05:            CPA         NUM0,i                   ;   (char == '0'){
                  BRNE        ELSEIF06
 THEN05:          STRO        morse0,d                 ;   print(morse0);;
