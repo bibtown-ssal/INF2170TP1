@@ -14,7 +14,7 @@ CHIFDEB:         .EQUATE     0x0030                   ;CHIFDEF = '0'
 CHIFFIN:         .EQUATE     0x0039                   ;CHIFFIN = '9'
 NEWLINE:         .EQUATE     0x000A                   ;NEWLINE = '\n'
 NEWCHAR:         .EQUATE     0x0021                   ;NEWCHAR = '!'
-MINTOMAJ:        .EQUATE     32                       ;MINTOMAJ = 22 //valeur a soustraire
+MINTOMAJ:        .EQUATE     32                       ;MINTOMAJ = 32 //valeur a soustraire
 ;                                                      //pour transformer une minuscule en majuscule
 CHIFFRE:         .EQUATE     2
 LETTRE:          .EQUATE     1
@@ -98,7 +98,7 @@ end01:           STOP                                 ;}
 ; chiffreEnMorse(char)   affiche la string morse equivalente au char en A
                                                       ;{
 THEN01:          NOP0                                 ;if
-IF10:            LDX         dernier,d                ;   (dernier == LETTRE){
+IF10:            LDX         dernier,d                ;   (dernier == CHIFFRE){
                  CPX         CHIFFRE,i
                  BRNE        ELSE10
 THEN10:          CHARO       NEWCHAR,i                ;   print('!'); 
